@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "set NODE_ENV=test&& jest --runInBand --noStackTrace --forceExit",
+    "test:coverage": "set NODE_ENV=test&& jest --coverage --runInBand --noStackTrace --forceExit",
     "dev": "nodemon src/main/server.ts"
   },
   "repository": {
