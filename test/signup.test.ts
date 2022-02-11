@@ -61,4 +61,16 @@ describe('Testando a rota /signup', () => {
       .send(body)
       .expect(400, done);
   });
+
+  it('deve retornar um erro 400 caso o campo password tiver menos de 6 caracteres', (done) => {
+    const body = {
+      name: 'valid_name',
+      email: 'valid_email@mail.com',
+      password: '12345',
+    };
+    request(app)
+      .post('/signup')
+      .send(body)
+      .expect(400, done);
+  });
 });
