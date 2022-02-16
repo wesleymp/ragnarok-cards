@@ -25,7 +25,7 @@ describe('Testando o controller signupController', () => {
   it('deve retornar um status 409 se o email informado já existir ao efetuar o registro', async () => {
     sinon.stub(signupService, 'signupService')
       .rejects({ status: 409, message: 'Este email já foi cadastrado.' });
-
+    await signupController(req, res);
     expect(res.status.calledWith(409)).toBe(true);
   });
 
