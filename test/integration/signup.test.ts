@@ -1,8 +1,14 @@
 import request from 'supertest';
 
 import app from '../../src/main/app';
+import { connection } from '../../src/models/connection';
 
 describe('Testando a rota /signup', () => {
+  afterEach(async () => {
+    const conn = await connection.connect();
+    await conn.query('DELETE FROM "users"');
+  });
+
   it('deve retornar um erro 400 caso o campo nome não exista', (done) => {
     const body = {
       email: 'valid_email@mail.com',
@@ -72,5 +78,17 @@ describe('Testando a rota /signup', () => {
       .post('/signup')
       .send(body)
       .expect(400, done);
+  });
+
+  it('deve retornar um status 201 caso o usuário for registrado com sucesso', (done) => {
+    const body = {
+      name: 'valid_name',
+      email: 'valid_email@mail.com',
+      password: 'valid_password',
+    };
+    request(app)
+      .post('/signup')
+      .send(body)
+      .expect(201, done);
   });
 });
