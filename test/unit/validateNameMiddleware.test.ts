@@ -1,0 +1,22 @@
+import sinon from 'sinon';
+
+import { validateNameMiddleware } from '../../src/middlewares';
+
+describe('Testando o middleware validateNameMiddleware', () => {
+  const req: any = {};
+  const res: any = {};
+  const next: any = {};
+
+  beforeEach(() => {
+    req.body = {};
+
+    res.status = sinon.stub().returns(res);
+    res.json = sinon.stub().returns(res);
+  });
+
+  it('deve retornar um status 400 se o usuário não informar um name para criar um novo registro', () => {
+    req.body.name = '';
+    validateNameMiddleware(req, res, next);
+    expect(res.status.calledWith(400)).toBe(true);
+  });
+});
