@@ -19,4 +19,10 @@ describe('Testando o middleware validateNameMiddleware', () => {
     validateNameMiddleware(req, res, next);
     expect(res.status.calledWith(400)).toBe(true);
   });
+
+  it('deve retornar "O campo nome não pode ser nulo." se o usuário não informar um name para criar um novo registro', () => {
+    req.body.name = '';
+    validateNameMiddleware(req, res, next);
+    expect(res.json.calledWith({ message: 'O campo nome não pode ser nulo.' })).toBe(true);
+  });
 });
