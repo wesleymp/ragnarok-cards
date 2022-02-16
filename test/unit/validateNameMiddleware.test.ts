@@ -25,4 +25,10 @@ describe('Testando o middleware validateNameMiddleware', () => {
     validateNameMiddleware(req, res, next);
     expect(res.json.calledWith({ message: 'O campo nome não pode ser nulo.' })).toBe(true);
   });
+
+  it('deve retornar um status 400 se o usuário informar um name menor que 2 caracteres para criar um novo registro', () => {
+    req.body.name = '1';
+    validateNameMiddleware(req, res, next);
+    expect(res.status.calledWith(400)).toBe(true);
+  });
 });
