@@ -31,4 +31,10 @@ describe('Testando o middleware validateNameMiddleware', () => {
     validateNameMiddleware(req, res, next);
     expect(res.status.calledWith(400)).toBe(true);
   });
+
+  it('deve retornar "O campo nome deve ter mais de 2 caracteres." se o usuário informar um name menor que 2 caracteres para criar um novo registro', () => {
+    req.body.name = '1';
+    validateNameMiddleware(req, res, next);
+    expect(res.json.calledWith({ message: 'O campo nome deve ter mais de 2 caracteres.' })).toBe(true);
+  });
 });
