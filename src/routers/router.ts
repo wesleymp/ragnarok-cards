@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { signupController } from '../controllers';
+import { signupController, signinController } from '../controllers';
 import {
   validateNameMiddleware,
   validateEmailMiddleware,
@@ -15,6 +15,13 @@ router.post(
   validateEmailMiddleware,
   validatePasswordMiddleware,
   signupController,
+);
+
+router.post(
+  '/signin',
+  validateEmailMiddleware,
+  validatePasswordMiddleware,
+  signinController,
 );
 
 export default router;
