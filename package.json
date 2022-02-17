@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "set NODE_ENV=test&& jest --runInBand --noStackTrace --forceExit",
-    "test:unit": "jest unit --runInBand --noStackTrace",
+    "test:unit": "jest unit --runInBand --noStackTrace --forceExit",
     "test:integration": "set NODE_ENV=test&& jest integration --runInBand --noStackTrace --forceExit",
     "test:coverage": "set NODE_ENV=test&& jest --coverage --runInBand --noStackTrace --forceExit",
     "dev": "nodemon src/main/server.ts"
