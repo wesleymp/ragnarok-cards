@@ -8,7 +8,7 @@ export const signinController = async (req: Request, res: Response) => {
     const userData = await signinService(email, password);
     return res
       .status(userData.status)
-      .json({ message: userData.message, token: userData.token, data: userData.data });
+      .json({ token: userData.token });
   } catch (error: any) {
     return res.status(error.status).json({ message: error.message });
   }

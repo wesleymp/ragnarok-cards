@@ -12,10 +12,5 @@ export const signinService = async (email: string, password: string) => {
     throw error(401, 'Email ou senha inválidos.');
   }
   delete userData.password;
-  return {
-    status: 200,
-    message: 'Login efetuado com sucesso!',
-    token: genereteJwt(userData),
-    data: userData,
-  };
+  return { status: 200, token: genereteJwt(userData) };
 };
