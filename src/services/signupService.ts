@@ -2,8 +2,7 @@ import { error } from './helpers/error';
 import { signupModel } from '../models/signupModel';
 import { signinModel } from '../models/signinModel';
 
-const checkEmail = async (email: string) => {
-  await signinModel(email);
+export const checkEmail = async (email: string) => {
   if ((await signinModel(email)).rowCount > 0) {
     throw error(409, 'Este email já foi cadastrado.');
   }
