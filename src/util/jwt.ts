@@ -15,8 +15,16 @@ export const genereteJwt = (data: object) => {
   return token;
 };
 
-export const verifyToken = (token: string) => verify(
-  token,
-  process.env.SECRET_KEY_JWT as string,
-  (_err: any, decoded: any) => decoded,
-);
+export const authorizationRemovePrefix = (authorization: string) => {
+  const splitAuth = authorization.split(' ');
+  return splitAuth[1];
+};
+
+export const verifyToken = (token: string): any => {
+  const decodeToken = verify(
+    token,
+    process.env.SECRET_KEY_JWT as string,
+    (_err, decoded) => decoded,
+  );
+  return decodeToken;
+};

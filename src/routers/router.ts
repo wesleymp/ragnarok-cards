@@ -1,10 +1,11 @@
 import { Router } from 'express';
 
-import { signupController, signinController } from '../controllers';
+import { signupController, signinController, newCardController } from '../controllers';
 import {
   validateNameMiddleware,
   validateEmailMiddleware,
   validatePasswordMiddleware,
+  authMiddleware,
 } from '../middlewares';
 
 const router = Router();
@@ -22,6 +23,13 @@ router.post(
   validateEmailMiddleware,
   validatePasswordMiddleware,
   signinController,
+);
+
+router.post(
+  '/new-card',
+  authMiddleware,
+  validateNameMiddleware,
+  newCardController,
 );
 
 export default router;
