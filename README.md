@@ -28,7 +28,8 @@
 # Instalação
 
 - `git clone https://github.com/wesleymp/ragnarok-cards.git`
-  Entra na pasta do projeto cd ragnarok-cards
+
+Entra na pasta do projeto `cd ragnarok-cards`
 
 Utilize o comando `npm install`
 
