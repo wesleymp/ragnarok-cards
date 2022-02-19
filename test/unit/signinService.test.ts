@@ -2,6 +2,7 @@ import sinon from 'sinon';
 
 import { signinService } from '../../src/services';
 import * as signinModel from '../../src/models/signinModel';
+import { crypt } from '../../src/services/helpers/bcrypt';
 
 describe('Testando o service signinService', () => {
   afterEach(() => {
@@ -35,7 +36,7 @@ describe('Testando o service signinService', () => {
           id: 1,
           name: 'valid_name',
           email: 'valid_email@mail.com',
-          password: 'valid_password',
+          password: crypt('valid_password'),
         },
       ],
     };
@@ -51,7 +52,7 @@ describe('Testando o service signinService', () => {
           id: 1,
           name: 'valid_name',
           email: 'valid_email@mail.com',
-          password: 'valid_password',
+          password: crypt('valid_password'),
         },
       ],
     };
