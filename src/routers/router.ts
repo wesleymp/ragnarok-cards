@@ -1,6 +1,11 @@
 import { Router } from 'express';
 
-import { signupController, signinController, newCardController } from '../controllers';
+import {
+  signupController,
+  signinController,
+  newCardController,
+  allCardsController,
+} from '../controllers';
 import {
   validateNameMiddleware,
   validateEmailMiddleware,
@@ -30,6 +35,12 @@ router.post(
   authMiddleware,
   validateNameMiddleware,
   newCardController,
+);
+
+router.get(
+  '/all-cards',
+  authMiddleware,
+  allCardsController,
 );
 
 export default router;
