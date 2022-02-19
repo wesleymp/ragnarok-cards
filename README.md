@@ -93,6 +93,17 @@ create table "users"(
 );
 ```
 
+- Tabela `cards`
+
+```sql
+create table "cards"(
+	id serial primary key not null,
+	name varchar(50) not null,
+	image varchar (255) not null,
+	description text
+);
+```
+
 # Testes
 
 ### Verifique o scrips do `package.json` para poder rodar os testes corretamente
