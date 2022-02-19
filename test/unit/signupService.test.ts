@@ -30,12 +30,16 @@ describe('Testando o service signupService', () => {
   });
 
   it('deve retornar um status 201 se o usuário for registrado com sucesso', async () => {
+    const result: any = { rowCount: 0 };
+    sinon.stub(signinModel, 'signinModel').resolves(result);
     sinon.stub(signupModel, 'signupModel').resolves();
     const dataSignup = await signupService('valid_name', 'valid_email@mail.com', 'valid_password');
     expect(dataSignup.status).toBe(201);
   });
 
   it('deve retornar "Registrado com sucesso!" se o usuário for registrado com sucesso', async () => {
+    const result: any = { rowCount: 0 };
+    sinon.stub(signinModel, 'signinModel').resolves(result);
     sinon.stub(signupModel, 'signupModel').resolves();
     const dataSignup = await signupService('valid_name', 'valid_email@mail.com', 'valid_password');
     expect(dataSignup.message).toBe('Registrado com sucesso!');
