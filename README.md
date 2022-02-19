@@ -78,7 +78,7 @@ _Request Body:_
 }
 ```
 
-[POST]: `/new-card` | Rota para adicionar um novo card
+[POST]: `/new-card` | Rota para adicionar um novo card.
 
 - Precisa enviar um _`Bearer Auth`_ e ser admin para poder adicionar um card.
 
@@ -91,6 +91,10 @@ _Request Body:_
   "description": "example_description"
 }
 ```
+
+[GET]: `/all-cards` | Rota para visualizar todos os cards.
+
+- Precisa enviar um _`Bearer Auth`_ para visualizar todos os cards.
 
 # Database
 
