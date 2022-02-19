@@ -2,11 +2,13 @@ import request from 'supertest';
 
 import app from '../../src/main/app';
 import { connection } from '../../src/models/connection';
+import { crypt } from '../../src/services/helpers/bcrypt';
 
 describe('Testando a rota /signin', () => {
   beforeAll(async () => {
+    const hashPassword = crypt('valid_password');
     const conn = await connection.connect();
-    await conn.query('INSERT INTO "users" ("name", "email", "password") VALUES (\'valid_name\', \'valid_email@mail.com\', \'valid_password\')');
+    await conn.query(`INSERT INTO "users" ("name", "email", "password") VALUES ('valid_name', 'valid_email@mail.com', '${hashPassword}')`);
   });
 
   afterAll(async () => {
