@@ -78,6 +78,20 @@ _Request Body:_
 }
 ```
 
+[POST]: `/new-card` | Rota para adicionar um novo card
+
+- Precisa enviar um _`Bearer Auth`_ e ser admin para poder adicionar um card.
+
+_Request Body:_
+
+```json
+{
+  "name": "Example Name",
+  "image": "example_image.png",
+  "description": "example_description"
+}
+```
+
 # Database
 
 ## OBS: _Caso for rodar os testes crie um outro banco de dados com as mesmas tabelas_
