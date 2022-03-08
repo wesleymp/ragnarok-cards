@@ -19,7 +19,7 @@ describe('Testando a rota /all-cards', () => {
     await conn.query('DELETE FROM "cards"');
   });
 
-  it('deve retornar um status 401 se o usuário não informar um token para poder adicionar um novo card', (done) => {
+  it('deve retornar um status 401 se o usuário não informar um token para acessar a rota', (done) => {
     const headers = {
       authorization: '',
     };
@@ -29,7 +29,7 @@ describe('Testando a rota /all-cards', () => {
       .expect(401, done);
   });
 
-  it('deve retornar um status 401 se o usuário informar um token inválido para poder adicionar um novo card', (done) => {
+  it('deve retornar um status 401 se o usuário informar um token inválido para acessar a rota', (done) => {
     const headers = {
       authorization: 'invalid_token',
     };
