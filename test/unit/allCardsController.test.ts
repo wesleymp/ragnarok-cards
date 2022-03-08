@@ -36,7 +36,7 @@ describe('Testando o controller allCardsController', () => {
   it('deve retornar um status 201 se encontrar 1 ou mais cards', async () => {
     sinon.stub(allCardsService, 'allCardsService')
       .resolves({
-        status: 201,
+        status: 200,
         data: [{
           id: 1,
           name: 'valid_name',
@@ -45,6 +45,6 @@ describe('Testando o controller allCardsController', () => {
         }],
       });
     await allCardsController(req, res);
-    expect(res.status.calledWith(201)).toBe(true);
+    expect(res.status.calledWith(200)).toBe(true);
   });
 });
