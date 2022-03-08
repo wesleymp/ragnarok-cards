@@ -96,6 +96,10 @@ _Request Body:_
 
 - Precisa enviar um _`Bearer Auth`_ para visualizar todos os cards.
 
+[GET]: `/random-card` | Rota que mostra um card aleatório.
+
+- Precisa enviar um _`Bearer Auth`_ para visualizar o card.
+
 # Database
 
 ## OBS: _Caso for rodar os testes crie um outro banco de dados com as mesmas tabelas_

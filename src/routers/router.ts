@@ -5,6 +5,7 @@ import {
   signinController,
   newCardController,
   allCardsController,
+  randomCardController,
 } from '../controllers';
 import {
   validateNameMiddleware,
@@ -41,6 +42,12 @@ router.get(
   '/all-cards',
   authMiddleware,
   allCardsController,
+);
+
+router.get(
+  '/random-card',
+  authMiddleware,
+  randomCardController,
 );
 
 export default router;
