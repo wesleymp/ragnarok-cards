@@ -110,6 +110,7 @@ _Request Body:_
 {
   "id": 1,
 }
+```
 
 # Database
 
