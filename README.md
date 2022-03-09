@@ -106,9 +106,9 @@ _Request Body:_
 
 _Request Body:_
 
-````json
+```json
 {
-  "id": 1,
+  "id": 1
 }
 ```
 
@@ -125,7 +125,7 @@ create table "users"(
 	email varchar (100) not null,
 	password varchar (70) not null
 );
-````
+```
 
 - Tabela `cards`
 
@@ -137,6 +137,8 @@ create table "cards"(
 	description text
 );
 ```
+
+- Tabela `album`
 
 ```sql
 create table "album"(
