@@ -6,6 +6,7 @@ import {
   newCardController,
   allCardsController,
   randomCardController,
+  albumController,
 } from '../controllers';
 import {
   validateNameMiddleware,
@@ -48,6 +49,12 @@ router.get(
   '/random-card',
   authMiddleware,
   randomCardController,
+);
+
+router.post(
+  '/album',
+  authMiddleware,
+  albumController,
 );
 
 export default router;

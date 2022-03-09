@@ -100,6 +100,17 @@ _Request Body:_
 
 - Precisa enviar um _`Bearer Auth`_ para visualizar o card.
 
+[POST]: `/album` | Rota para adicionar um card ao álbum.
+
+- Precisa enviar um _`Bearer Auth`_ para poder adicionar um card ao álbum.
+
+_Request Body:_
+
+````json
+{
+  "id": 1,
+}
+
 # Database
 
 ## OBS: _Caso for rodar os testes crie um outro banco de dados com as mesmas tabelas_
@@ -113,7 +124,7 @@ create table "users"(
 	email varchar (100) not null,
 	password varchar (70) not null
 );
-```
+````
 
 - Tabela `cards`
 
@@ -123,6 +134,14 @@ create table "cards"(
 	name varchar(50) not null,
 	image varchar (255) not null,
 	description text
+);
+```
+
+```sql
+create table "album"(
+	user_id INTEGER,
+	card_id INTEGER,
+	PRIMARY KEY (user_id, card_id)
 );
 ```
 
