@@ -40,14 +40,14 @@ describe('Testando o controller newCardController', () => {
 
   it('deve retornar um status 201 se o card for adicionado com sucesso', async () => {
     sinon.stub(newCardService, 'newCardService')
-      .rejects({ status: 201, message: 'Card adicionado com sucesso!' });
+      .resolves({ status: 201, message: 'Card adicionado com sucesso!' });
     await newCardController(req, res);
     expect(res.status.calledWith(201)).toBe(true);
   });
 
   it('deve retornar "Card adicionado com sucesso!" se o card for adicionado com sucesso', async () => {
     sinon.stub(newCardService, 'newCardService')
-      .rejects({ status: 201, message: 'Card adicionado com sucesso!' });
+      .resolves({ status: 201, message: 'Card adicionado com sucesso!' });
     await newCardController(req, res);
     expect(res.json.calledWith({ message: 'Card adicionado com sucesso!' })).toBe(true);
   });
