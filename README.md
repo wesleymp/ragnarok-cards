@@ -1,5 +1,3 @@
-# Em desenvolvimento ...
-
 # API Ragnarok Cards
 
 - API para coleção de cartas, contem cartas, itens entre outras coisas do jogo Ragnarok Online.
@@ -144,6 +142,7 @@ create table "cards"(
 create table "album"(
 	user_id INTEGER,
 	card_id INTEGER,
+	card_date TIMESTAMP,
 	PRIMARY KEY (user_id, card_id)
 );
 ```
