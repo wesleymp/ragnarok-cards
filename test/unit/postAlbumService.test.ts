@@ -1,7 +1,7 @@
 import sinon from 'sinon';
 
-import { postAlbumService, checkCardinAlbum } from '../../src/services';
-import { genereteJwt } from '../../src/util/jwt';
+import { postAlbumService, checkCardinAlbum, checkDateAlbum } from '../../src/services';
+import { authorizationRemovePrefix, genereteJwt, verifyToken } from '../../src/util/jwt';
 import * as postAlbumModel from '../../src/models/postAlbumModel';
 
 describe('Testando o service postAlbumService', () => {
@@ -11,6 +11,16 @@ describe('Testando o service postAlbumService', () => {
     email: 'valid_email@mail.com',
     role: 'admin',
   };
+
+  const date = new Date();
+
+  const dataAlbumModel = [
+    {
+      user_id: 1,
+      card_id: 1,
+      card_date: new Date(date.setHours(date.getHours() + 2)),
+    },
+  ];
 
   const token = `Bearer ${genereteJwt(data)}`;
 
@@ -26,7 +36,29 @@ describe('Testando o service postAlbumService', () => {
     sinon.restore();
   });
 
-  it('deve retornar um status 409 se ao aodicionar o card o mesmo já estiver no ábum', async () => {
+  it('deve retornar um status 409 se ao adicionar o card o tempo de delay ainda não estiver passado', async () => {
+    const dataAuthorization = verifyToken(authorizationRemovePrefix(headers.authorization));
+    const result: any = { rowCount: 1, rows: dataAlbumModel };
+    sinon.stub(postAlbumModel, 'checkAlbumModel').resolves(result);
+    try {
+      await checkDateAlbum(dataAuthorization.id);
+    } catch (error: any) {
+      expect(error.status).toBe(409);
+    }
+  });
+
+  it('deve retornar "Você ainda não pode pegar esta figura." se ao adicionar o card o tempo de delay ainda não estiver passado', async () => {
+    const dataAuthorization = verifyToken(authorizationRemovePrefix(headers.authorization));
+    const result: any = { rowCount: 1, rows: dataAlbumModel };
+    sinon.stub(postAlbumModel, 'checkAlbumModel').resolves(result);
+    try {
+      await checkDateAlbum(dataAuthorization.id);
+    } catch (error: any) {
+      expect(error.message).toBe('Você ainda não pode pegar esta figura.');
+    }
+  });
+
+  it('deve retornar um status 409 se ao adicionar o card o mesmo já estiver no ábum', async () => {
     const result: any = { rowCount: 1 };
     sinon.stub(postAlbumModel, 'checkCardInAlbumModel').resolves(result);
     try {
