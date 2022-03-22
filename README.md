@@ -78,13 +78,14 @@ _Request Body:_
 [POST]: `/new-card` | Rota para adicionar um novo card.
 
 - Precisa enviar um _`Bearer Auth`_ e ser admin para poder adicionar um card.
+- A imagem do card dever ser um link externo, nesta aplicação não é possível enviar um arquivo de imagem.
 
 _Request Body:_
 
 ```json
 {
   "name": "Example Name",
-  "image": "example_image.png",
+  "image": "https://exemplo-site.com/example_image.png",
   "description": "example_description"
 }
 ```
@@ -100,6 +101,7 @@ _Request Body:_
 [POST]: `/album` | Rota para adicionar um card ao álbum.
 
 - Precisa enviar um _`Bearer Auth`_ para poder adicionar um card ao álbum.
+- O id enviado no request é o do card, portando antes de adicionar um card ao álbum, adicione um card na aplicação.
 
 _Request Body:_
 
