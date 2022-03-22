@@ -2,7 +2,6 @@
 
 - API para coleção de cartas, contem cartas, itens entre outras coisas do jogo Ragnarok Online.
 - Você pode dar rolls e assim selecionar uma carta para seu álbum, sendo que cada usuário podera selecionar apenas 1 carta a cada 2 horas e não podendo ter cartas repetidas.
-- Você também pode dar um like na sua carta favorita e cada carta só poderá ter 1 like por usuário.
 
 Índices
 
