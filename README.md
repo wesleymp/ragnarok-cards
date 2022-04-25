@@ -122,7 +122,7 @@ create table "users"(
 	id serial primary key not null,
 	name varchar(50) not null,
 	email varchar (100) not null,
-  role varchar (50) DEFAULT 'admin',
+	role varchar (50) DEFAULT 'admin',
 	password varchar (70) not null
 );
 ```
