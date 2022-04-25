@@ -113,7 +113,7 @@ _Request Body:_
 
 # Database
 
-## OBS: _Caso for rodar os testes crie um outro banco de dados com as mesmas tabelas_
+## OBS: _Caso for rodar os testes crie um outro banco de dados com as mesmas tabelas. A coluna role está como valor default `admin` para poder adicionar um card em produção deve ser modificado para `member`_
 
 - Tabela `users`
 
@@ -122,6 +122,7 @@ create table "users"(
 	id serial primary key not null,
 	name varchar(50) not null,
 	email varchar (100) not null,
+  role varchar (50) DEFAULT 'admin',
 	password varchar (70) not null
 );
 ```
